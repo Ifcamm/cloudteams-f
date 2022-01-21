@@ -5,8 +5,9 @@ import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { MaintenancePlan } from 'src/app/models/maintenance-plan.model';
 import { Maintenance } from 'src/app/models/maintenance.model';
+import { environment } from 'src/environments/environment.prod';
 
-const url = 'http://localhost:3000/api/maintenanceplans';
+const url = environment.apiUrl + '/maintenanceplans';
 
 @Injectable({
   providedIn: 'root',
@@ -39,13 +40,13 @@ export class MaintenancePlanService {
               startdate: String;
               periodicity: String;
             }>(
-              `http://localhost:3000/api/maintenances/maintenance/${maintenancePlan.workid}`
+              `https://cloud-teams-backend.herokuapp.com/api/maintenances/maintenance/${maintenancePlan.workid}`
             )
             .subscribe((maintenance) => {
               maintenance.startdate = now;
               this.http
                 .put(
-                  `http://localhost:3000/api/maintenances/${maintenancePlan.workid}`,
+                  `https://cloud-teams-backend.herokuapp.com/api/maintenances/${maintenancePlan.workid}`,
                   maintenance
                 )
                 .subscribe((response) => {
@@ -148,7 +149,9 @@ export class MaintenancePlanService {
               task: string;
               startdate: String;
               periodicity: string;
-            }>(`http://localhost:3000/api/maintenances/maintenance/${workid}`)
+            }>(
+              `https://cloud-teams-backend.herokuapp.com/api/maintenances/maintenance/${workid}`
+            )
             .subscribe((maintenance) => {
               localStorage.setItem('periodicity', maintenance.periodicity)!;
               localStorage.setItem('task', maintenance.task)!;
@@ -165,7 +168,7 @@ export class MaintenancePlanService {
       );
       newMaintenancePlan[oldMintenancePlanIndex] = maintenancePlan;
       this.maintenancesByWorkidUpdated.next([...this.maintenancesByWorkid]);
-      // this.router.navigate([`/maintenances/${this.machineAssetcode}`]);
+      this.router.navigate([`/machines`]);
     });
   }
 

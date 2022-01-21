@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { Maintenance } from 'src/app/models/maintenance.model';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
 // const url = environment.apiUrl + '/maintenances/allmaintenances';
-const url = 'http://localhost:3000/api/maintenances';
+const url = environment.apiUrl + '/maintenances';
 
 @Injectable({
   providedIn: 'root',

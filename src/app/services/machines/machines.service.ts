@@ -4,8 +4,9 @@ import { Router } from '@angular/router';
 import { Machine } from 'src/app/models/machine.model';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 
-const url = 'http://localhost:3000/api/machines';
+const url = environment.apiUrl + '/machines';
 
 @Injectable({
   providedIn: 'root',
@@ -100,6 +101,7 @@ export class MachinesService {
       );
       newMaintenance[oldMintenanceIndex] = machines;
       this.machineUpdated.next([...this.machines]);
+      this.router.navigate(['/machines']);
     });
   }
 
