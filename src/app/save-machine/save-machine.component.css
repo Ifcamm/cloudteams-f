@@ -1,0 +1,27 @@
+mat-form-field,
+input {
+  width: 100%;
+  margin-bottom: 8px;
+  margin-left: 25px;
+}
+
+mat-card {
+  margin: auto;
+  margin-top: 2rem;
+  width: 95%;
+}
+
+.mat-raised-button {
+  width: 10%;
+  height: 100%;
+  background-color: #f9d937;
+  color: rgb(0, 0, 0);
+}
+
+div {
+  display: flex;
+}
+.cancelbtn {
+  background-color: #ffffff;
+  margin-right: 10px;
+}

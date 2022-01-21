@@ -1,0 +1,73 @@
+<mat-card>
+  <form
+    (submit)="saveMaintenance(maintenanceForm)"
+    #maintenanceForm="ngForm"
+    class="example-form"
+  >
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Asset code</mat-label>
+        <input
+          matInput
+          [ngModel]="machineAssetcode"
+          #assetcode="ngModel"
+          name="assetcode"
+          readonly
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Task</mat-label>
+        <input
+          matInput
+          [ngModel]="maintenance.task"
+          #task="ngModel"
+          name="task"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Start date</mat-label>
+        <input
+          matInput
+          [ngModel]="maintenance.startdate"
+          name="startdate"
+          #startdate="ngModel"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Periodicity</mat-label>
+        <mat-select
+          [ngModel]="maintenance.periodicity"
+          #periodicity="ngModel"
+          name="periodicity"
+          required
+        >
+          <mat-option value="Semanal">Semanal</mat-option>
+          <mat-option value="Mensual">Mensual</mat-option>
+          <mat-option value="Semestral">Semestral</mat-option>
+          <mat-option value="Anual">Anual</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button
+        class="cancelbtn"
+        type="button"
+        mat-raised-button
+        [routerLink]="['/maintenances/', machineAssetcode]"
+        color="primary"
+      >
+        Cancel
+      </button>
+
+      <button type="submit" mat-raised-button color="primary">Save</button>
+    </div>
+  </form>
+</mat-card>

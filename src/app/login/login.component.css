@@ -1,0 +1,24 @@
+.example-container .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+section {
+  width: 20%;
+  margin: auto;
+  margin-top: 1rem;
+}
+.mat-form-field {
+  width: 100%;
+}
+
+button {
+  margin-left: 1rem;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.mat-card {
+  width: 350px;
+  margin: auto;
+  margin-top: 8px;
+}

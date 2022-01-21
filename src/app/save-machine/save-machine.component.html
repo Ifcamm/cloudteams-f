@@ -1,0 +1,181 @@
+<mat-card>
+  <form
+    (submit)="saveMachine(machineForm)"
+    #machineForm="ngForm"
+    class="example-form"
+  >
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Asset code</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.assetcode"
+          #assetcode="ngModel"
+          name="assetcode"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Asset</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.asset"
+          #identification="ngModel"
+          name="asset"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Trademark</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.trademark"
+          #identification="ngModel"
+          name="trademark"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Code</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.code"
+          #code="ngModel"
+          name="code"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Location</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.location"
+          #code="ngModel"
+          name="location"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Model</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.model"
+          #model="ngModel"
+          name="model"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Series</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.series"
+          #series="ngModel"
+          name="series"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Voltage</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.voltage"
+          #voltage="ngModel"
+          name="voltage"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Measurement</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.measurement"
+          #measurement="ngModel"
+          name="measurement"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Power</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.power"
+          #power="ngModel"
+          name="power"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Inventory</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.inventory"
+          #inventory="ngModel"
+          name="inventory"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Speed</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.speed"
+          #speed="ngModel"
+          name="speed"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Reference</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.reference"
+          #powreferenceer="ngModel"
+          name="reference"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Capacity</mat-label>
+        <input
+          matInput
+          [ngModel]="machine.capacity"
+          #capacity="ngModel"
+          name="capacity"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <button
+        class="cancelbtn"
+        type="button"
+        mat-raised-button
+        routerLink="/machines"
+        color="primary"
+      >
+        Cancel
+      </button>
+
+      <button type="submit" mat-raised-button color="primary">Save</button>
+    </div>
+  </form>
+</mat-card>

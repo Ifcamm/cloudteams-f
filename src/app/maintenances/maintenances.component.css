@@ -1,0 +1,76 @@
+.example-container {
+  width: 40px;
+  height: 200px;
+  margin: 10px;
+  border: 1px solid #555;
+}
+
+.mat-card {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.mat-card-title {
+  margin-bottom: 1rem;
+}
+
+.mat-raised-button {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  min-width: 20px;
+  height: 30px;
+  margin-top: 2.5%;
+  text-align: center;
+}
+.mat-paginator {
+  background: rgba(240, 248, 255, 0.5);
+
+  margin-left: 5%;
+}
+mat-card {
+  margin: auto;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+table {
+  width: 95%;
+  margin-left: 2.5%;
+  justify-items: center;
+}
+
+mat-cell:first-of-type {
+  justify-content: center;
+  padding-left: 0px;
+}
+
+.mat-button {
+  height: 30%;
+  margin-top: 2%;
+  margin-right: 3px;
+}
+
+.mat-raised-button {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+  background-color: #f9d937;
+  color: rgb(0, 0, 0);
+}
+
+.mat-raised-button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.editbtn {
+  color: #f9d937;
+  background-color: #555;
+}
+
+.deletebtn {
+  color: black;
+  background-color: #555;
+}

@@ -1,0 +1,43 @@
+<p>
+  <mat-toolbar class="first-tool-bar" color="primary">
+    <button
+      mat-icon-button
+      aria-label="Example icon-button with a menu"
+      *ngIf="isLogin === true"
+      [routerLink]="['/']"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span>
+      <a routerLink="">Cloud teams</a>
+    </span>
+    <span class="spacer"></span>
+    <ul>
+      <li>
+        <a
+          mat-button
+          *ngIf="isLogin === true"
+          id="username"
+          style="color: #798083"
+          >{{ userName }}</a
+        >
+        <a
+          mat-button
+          routerLink="/login"
+          routerLinkActive="mat-accent"
+          *ngIf="isLogin === true"
+          (click)="onLogout()"
+          >Logout</a
+        >
+        <a
+          mat-button
+          routerLink="/login"
+          routerLinkActive="mat-accent"
+          *ngIf="isLogin === false"
+          >Login</a
+        >
+      </li>
+    </ul>
+  </mat-toolbar>
+</p>
