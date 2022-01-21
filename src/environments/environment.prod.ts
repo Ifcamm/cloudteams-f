@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://cloud-teams.herokuapp.com/api',
+  apiUrl: 'https://cloud-teams-backend.herokuapp.com/api/',
 };
