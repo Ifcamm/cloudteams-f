@@ -60,7 +60,7 @@ export class MaintenanceService {
                 id: maintenance._id,
                 assetcode: maintenance.assetcode,
                 task: maintenance.task,
-                startdate: maintenance.startdate,
+                startdate: maintenance.startdate.split('T')[0],
                 periodicity: maintenance.periodicity,
               };
             }

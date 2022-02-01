@@ -6,6 +6,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from '../services/users/user.service';
 import { MachinesService } from '../services/machines/machines.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-machines',
@@ -19,7 +20,7 @@ export class MachinesComponent implements OnInit, OnDestroy {
   isAuth: boolean = false;
   userRole: string = '';
   authSub!: Subscription;
-  dataSource: any;
+  dataSource: MatTableDataSource<Machine>;
 
   columnsToDisplay = [
     'id',
@@ -36,14 +37,15 @@ export class MachinesComponent implements OnInit, OnDestroy {
     public userService: UserService,
     public dialog: MatDialog
   ) {
+    this.dataSource = new MatTableDataSource(this.machines);
     this.machinesSub = this.machinesService
       .getMachinesUpdatedListener()
       .subscribe((machines: Machine[]) => {
         this.machines = machines;
       });
   }
-
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
 
   ngOnInit(): void {
     this.isAuth = this.userService.getIsAuthenticated();
@@ -53,9 +55,16 @@ export class MachinesComponent implements OnInit, OnDestroy {
       .subscribe((authStatus: boolean) => {
         this.isAuth = authStatus;
         this.onLogin(authStatus);
-        this.dataSource = new MatTableDataSource<Machine>(this.machines);
-        this.dataSource.paginator = this.paginator;
       });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   onLogin(authStatus: boolean) {
@@ -68,6 +77,7 @@ export class MachinesComponent implements OnInit, OnDestroy {
           this.machines = machines;
           this.dataSource = new MatTableDataSource<Machine>(this.machines);
           this.dataSource.paginator = this.paginator;
+          this.dataSource.sort = this.sort;
         });
     }
   }

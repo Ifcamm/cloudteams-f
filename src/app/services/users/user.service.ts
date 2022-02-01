@@ -154,6 +154,11 @@ export class UserService {
     localStorage.removeItem('userRole');
     localStorage.removeItem('identification');
     localStorage.removeItem('userName');
+    localStorage.removeItem('periodicity');
+    localStorage.removeItem('task');
+    localStorage.removeItem('maintenanceWorkid');
+    localStorage.removeItem('machineAssetcode');
+    localStorage.removeItem('workid');
   }
 
   private saveAuthData(

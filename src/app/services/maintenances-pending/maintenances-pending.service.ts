@@ -41,8 +41,9 @@ export class MaintenancesPendingService {
                 id: maintenance._id,
                 assetcode: maintenance.assetcode,
                 task: maintenance.task,
-                startdate: maintenance.startdate,
+                startdate: maintenance.startdate.split('T')[0],
                 periodicity: maintenance.periodicity,
+                expireStatus: '',
               };
             }
           );
@@ -50,7 +51,7 @@ export class MaintenancesPendingService {
       )
       .subscribe((response) => {
         this.maintenances = response;
-        this.maintenances = this.filtrador(this.maintenances);
+        this.maintenances = this.expireFilter(this.maintenances);
         this.maintenancesUpdated.next([...this.maintenances].reverse());
       });
   }
@@ -130,7 +131,7 @@ export class MaintenancesPendingService {
     return this.machineAssetcode;
   }
 
-  filtrador(array: Array<any>) {
+  expireFilter(array: Array<any>) {
     let salida = [];
     let now = Date.now();
     for (let i in array) {
@@ -138,13 +139,28 @@ export class MaintenancesPendingService {
         var item = new Date(array[i].startdate).getTime();
         let difference = now - item;
         if (difference > 86400000 * 7) {
+          array[i].expireStatus = 'Expired';
+          salida.push(array[i]);
+        } else if (
+          difference + 86400000 * 7 >= 86400000 * 7 &&
+          difference > 86400000 * 4
+        ) {
+          array[i].expireStatus = 'About to expire';
           salida.push(array[i]);
         }
       }
+
       if (array[i].periodicity === 'Mensual') {
         var item = new Date(array[i].startdate).getTime();
         let difference = now - item;
         if (difference > 86400000 * 30) {
+          array[i].expireStatus = 'Expired';
+          salida.push(array[i]);
+        } else if (
+          difference + 86400000 * 7 >= 86400000 * 7 &&
+          difference > 86400000 * 7
+        ) {
+          array[i].expireStatus = 'About to expire';
           salida.push(array[i]);
         }
       }
@@ -152,6 +168,13 @@ export class MaintenancesPendingService {
         var item = new Date(array[i].startdate).getTime();
         let difference = now - item;
         if (difference > 86400000 * 182.5) {
+          array[i].expireStatus = 'Expired';
+          salida.push(array[i]);
+        } else if (
+          difference + 86400000 * 7 >= 86400000 * 7 &&
+          difference > 86400000 * 7
+        ) {
+          array[i].expireStatus = 'About to expire';
           salida.push(array[i]);
         }
       }
@@ -159,6 +182,13 @@ export class MaintenancesPendingService {
         var item = new Date(array[i].startdate).getTime();
         let difference = now - item;
         if (difference > 86400000 * 365) {
+          array[i].expireStatus = 'Expired';
+          salida.push(array[i]);
+        } else if (
+          difference + 86400000 * 7 >= 86400000 * 7 &&
+          difference > 86400000 * 7
+        ) {
+          array[i].expireStatus = 'About to expire';
           salida.push(array[i]);
         }
       }

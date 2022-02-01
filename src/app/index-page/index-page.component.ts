@@ -40,6 +40,7 @@ export class IndexPageComponent implements OnInit, OnDestroy {
     'task',
     'startdate',
     'periodicity',
+    'status',
     'actions',
   ];
 

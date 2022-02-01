@@ -17,8 +17,8 @@ export class SaveMaintenancePlanComponent implements OnInit {
   maintenancePlanId!: string;
   machineAssetcode: string = localStorage.getItem('machineAssetcode')!;
   maintenanceWorkid: string = localStorage.getItem('maintenanceWorkid')!;
-  taskLS: string = localStorage.getItem('task')!;
-  periodicityLS: string = localStorage.getItem('periodicity')!;
+  taskLS: String = localStorage.getItem('task')!;
+  periodicityLS: String = localStorage.getItem('periodicity')!;
 
   maintenancePlan: MaintenancePlan = {
     id: '',
@@ -52,34 +52,44 @@ export class SaveMaintenancePlanComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
-        this.taskLS = localStorage.getItem('task')!;
-        this.periodicityLS = localStorage.getItem('periodicity')!;
+        // this.taskLS = localStorage.getItem('task')!;
+        // this.periodicityLS = localStorage.getItem('periodicity')!;
         this.isEditing = true;
         this.maintenancePlanId = paramMap.get('id')!;
         this.maintenancePlanService
           .getMaintenancePlanById(this.maintenancePlanId)
-          .subscribe(
-            (maintenancePlanData) =>
-              (this.maintenancePlan = {
-                id: maintenancePlanData._id,
-                worker: maintenancePlanData.worker,
-                workid: maintenancePlanData.workid,
-                periodicity: maintenancePlanData.periodicity,
-                date: maintenancePlanData.date,
-                starttime: maintenancePlanData.starttime,
-                finishtime: maintenancePlanData.finishtime,
-                totaltime: maintenancePlanData.totaltime,
-                operationtime: maintenancePlanData.operationtime,
-                replacementparts: maintenancePlanData.replacementparts,
-                ppe: maintenancePlanData.ppe,
-                risks: maintenancePlanData.risks,
-                assetcode: maintenancePlanData.assetcode,
-                task: maintenancePlanData.task,
-                taskrange: maintenancePlanData.taskrange,
-                result: maintenancePlanData.result,
-                observations: maintenancePlanData.observations,
-              })
-          );
+          .subscribe((maintenancePlanData) => {
+            (this.maintenancePlan = {
+              id: maintenancePlanData._id,
+              worker: maintenancePlanData.worker,
+              workid: maintenancePlanData.workid,
+              periodicity: maintenancePlanData.periodicity,
+              date: maintenancePlanData.date,
+              starttime: maintenancePlanData.starttime,
+              finishtime: maintenancePlanData.finishtime,
+              totaltime: maintenancePlanData.totaltime,
+              operationtime: maintenancePlanData.operationtime,
+              replacementparts: maintenancePlanData.replacementparts,
+              ppe: maintenancePlanData.ppe,
+              risks: maintenancePlanData.risks,
+              assetcode: maintenancePlanData.assetcode,
+              task: maintenancePlanData.task,
+              taskrange: maintenancePlanData.taskrange,
+              result: maintenancePlanData.result,
+              observations: maintenancePlanData.observations,
+            }),
+              (this.taskLS = maintenancePlanData.task);
+            this.periodicityLS = maintenancePlanData.periodicity;
+          });
+      } else {
+        this.machineAssetcode = paramMap.get('assetcode')!;
+        this.maintenanceWorkid = paramMap.get('workid')!;
+        this.maintenanceService
+          .getMaintenance(paramMap.get('workid')!)
+          .subscribe((maintenanceData) => {
+            this.taskLS = maintenanceData.task;
+            this.periodicityLS = maintenanceData.periodicity;
+          });
       }
     });
   }
@@ -99,4 +109,6 @@ export class SaveMaintenancePlanComponent implements OnInit {
     }
     form.resetForm();
   }
+
+  saveParameters() {}
 }
