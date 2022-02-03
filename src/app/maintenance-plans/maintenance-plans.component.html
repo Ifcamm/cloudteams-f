@@ -9,7 +9,7 @@
     ]"
     color="primary"
   >
-    Execute maintenance to {{ machineAssetcode }}
+    Perform maintenance to {{ machineAssetcode }}
   </button>
 </section>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
@@ -63,9 +63,10 @@
         mat-button
         color="primary"
       >
-        Details
+        Edit
       </button>
       <button
+        *ngIf="userRole === 'superuser'"
         class="deletebtn"
         mat-button
         color="warn"

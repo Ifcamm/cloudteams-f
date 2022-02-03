@@ -69,7 +69,7 @@ export class MachinesComponent implements OnInit, OnDestroy {
 
   onLogin(authStatus: boolean) {
     this.userRole = this.userService.getUserRole();
-    if (authStatus === true && this.userRole === 'superuser') {
+    if (authStatus === true) {
       this.machinesService.getMachines();
       this.machinesSub = this.machinesService
         .getMachinesUpdatedListener()

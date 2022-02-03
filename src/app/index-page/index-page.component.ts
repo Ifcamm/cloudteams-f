@@ -76,7 +76,7 @@ export class IndexPageComponent implements OnInit, OnDestroy {
   onLogin(authStatus: boolean) {
     this.userRole = this.userService.getUserRole();
 
-    if (authStatus === true && this.userRole === 'superuser') {
+    if (authStatus === true) {
       this.maintenancesPendingService.getMaintenances();
       this.maintenancesSub = this.maintenancesPendingService
         .getMaintenancesUpdatedListener()

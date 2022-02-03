@@ -12,6 +12,7 @@ import { UserService } from '../services/users/user.service';
   styleUrls: ['./maintenance-plans.component.css'],
 })
 export class MaintenancePlansComponent implements OnInit {
+  userRole: String = '';
   maintenanceWorkid!: string;
   maintenancePlansByWorkid: MaintenancePlan[] = [];
   machineAssetcode!: string;
@@ -46,6 +47,7 @@ export class MaintenancePlansComponent implements OnInit {
   }
 
   onLogin(authStatus: boolean) {
+    this.userRole = this.userService.getUserRole();
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id') && paramMap.has('assetcode')) {
         this.maintenanceWorkid = paramMap.get('id')!;

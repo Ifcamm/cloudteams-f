@@ -72,7 +72,7 @@ export class MaintenancesComponent implements OnInit {
         this.machineAssetcode = paramMap.get('assetcode')!;
       }
     });
-    if (authStatus === true && this.userRole === 'superuser') {
+    if (authStatus === true) {
       this.maintenanceService.getMaintenanceByAssetcode(this.machineAssetcode);
       this.maintenancesByAssetcodeSub = this.maintenanceService
         .getMaintenancesByAssetcodeUpdatedListener()

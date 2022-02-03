@@ -1,6 +1,12 @@
 <section>
-  <button mat-raised-button [routerLink]="['/maintenance/add']" color="primary">
-    Add new maintenance to {{ machineAssetcode }}
+  <p>Asset code: {{ machineAssetcode }}</p>
+  <button
+    *ngIf="userRole === 'superuser'"
+    mat-raised-button
+    [routerLink]="['/maintenance/add']"
+    color="primary"
+  >
+    Add new maintenance
   </button>
 </section>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" #tabla1>
@@ -43,6 +49,16 @@
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <mat-cell *matCellDef="let maintenance">
       <button
+        *ngIf="userRole === 'user'"
+        class="editbtn"
+        [routerLink]="['/maintenances/edit/', maintenance.id]"
+        mat-button
+        color="primary"
+      >
+        Details
+      </button>
+      <button
+        *ngIf="userRole === 'superuser'"
         class="editbtn"
         [routerLink]="['/maintenances/edit/', maintenance.id]"
         mat-button
@@ -51,7 +67,7 @@
         Edit
       </button>
       <button
-        onclick="return confirm('Are you sure?')"
+        *ngIf="userRole === 'superuser'"
         class="deletebtn"
         mat-button
         color="warn"

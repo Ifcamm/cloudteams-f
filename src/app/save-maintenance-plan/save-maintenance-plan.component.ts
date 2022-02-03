@@ -6,6 +6,7 @@ import { MaintenancePlanService } from '../services/maintenance-plans/maintenanc
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { MaintenanceService } from '../services/maintenances/maintenance.service';
+import { UserService } from '../services/users/user.service';
 
 @Component({
   selector: 'app-save-maintenance-plan',
@@ -14,6 +15,7 @@ import { MaintenanceService } from '../services/maintenances/maintenance.service
 })
 export class SaveMaintenancePlanComponent implements OnInit {
   private isEditing = false;
+  userRole: String = '';
   maintenancePlanId!: string;
   machineAssetcode: string = localStorage.getItem('machineAssetcode')!;
   maintenanceWorkid: string = localStorage.getItem('maintenanceWorkid')!;
@@ -43,6 +45,7 @@ export class SaveMaintenancePlanComponent implements OnInit {
   maintenancesPlanUpdated = new Subject<MaintenancePlan[]>();
 
   constructor(
+    public userService: UserService,
     private router: Router,
     public maintenancePlanService: MaintenancePlanService,
     public maintenanceService: MaintenanceService,
@@ -50,6 +53,7 @@ export class SaveMaintenancePlanComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userRole = this.userService.getUserRole();
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
         // this.taskLS = localStorage.getItem('task')!;

@@ -175,7 +175,14 @@
         Cancel
       </button>
 
-      <button type="submit" mat-raised-button color="primary">Save</button>
+      <button
+        *ngIf="userRole === 'superuser'"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Save
+      </button>
     </div>
   </form>
 </mat-card>

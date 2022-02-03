@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Machine } from '../models/machine.model';
 import { MachinesService } from '../services/machines/machines.service';
+import { UserService } from '../services/users/user.service';
 
 @Component({
   selector: 'app-save-machine',
@@ -11,6 +12,7 @@ import { MachinesService } from '../services/machines/machines.service';
 })
 export class SaveMachineComponent implements OnInit {
   private isEditing = false;
+  userRole: string = '';
   private machineId!: string;
   private machineAssetcode!: string;
   errorMessage = 'Este campo es requerido.';
@@ -34,10 +36,12 @@ export class SaveMachineComponent implements OnInit {
 
   constructor(
     public machinesService: MachinesService,
+    public userService: UserService,
     public route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.userRole = this.userService.getUserRole();
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
         this.isEditing = true;

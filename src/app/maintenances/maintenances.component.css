@@ -72,5 +72,16 @@ mat-cell:first-of-type {
 
 .deletebtn {
   color: black;
-  background-color: #555;
+  background-color: #666;
+}
+p {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #555;
+  margin-left: 2.5%;
+  font-size: 18px;
+  font-weight: 500;
+  min-width: 20px;
+  height: 30px;
+  margin-top: 2.5%;
+  text-align: left;
 }
