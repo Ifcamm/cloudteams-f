@@ -1,0 +1,60 @@
+mat-form-field {
+  width: 100%;
+  margin-right: 15px;
+}
+mat-card {
+  margin: auto;
+  margin-top: 2rem;
+  width: 60%;
+}
+
+.mat-raised-button {
+  width: 10%;
+  height: 100%;
+  background-color: #f9d937;
+  color: rgb(0, 0, 0);
+  margin-right: 15px;
+}
+.cancelbtn {
+  background-color: #888;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.secondmain-table {
+  width: 30%;
+}
+div {
+  display: flex;
+  margin-top: 10px;
+}
+.pequeno {
+  max-width: 15%;
+}
+.pequeno-mediano {
+  max-width: 20%;
+}
+.big {
+  max-width: 100%;
+}
+
+.div form {
+  margin-bottom: 20px;
+}
+
+.div form > * {
+  margin: 5px 0;
+}
+
+.div .mat-radio-button {
+  margin: 0 12px;
+}
+
+table {
+  width: 70%;
+  justify-items: center;
+}
+
+mat-cell:first-of-type {
+  justify-content: center;
+  padding-left: 0px;
+}

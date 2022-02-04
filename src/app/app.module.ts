@@ -35,6 +35,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ContractListComponent } from './contract-list/contract-list.component';
+import { SaveContractComponent } from './save-contract/save-contract.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SaveMaterialComponent } from './save-material/save-material.component';
+import { SaveToolComponent } from './save-tool/save-tool.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +55,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MaintenancePlansComponent,
     SaveMaintenancePlanComponent,
     WelcomeComponent,
+    ContractListComponent,
+    SaveContractComponent,
+    SaveMaterialComponent,
+    SaveToolComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +84,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MatNativeDateModule,
     MatRippleModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   providers: [
     {

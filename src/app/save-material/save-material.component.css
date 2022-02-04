@@ -1,0 +1,27 @@
+div {
+  display: flex;
+  margin: auto;
+}
+mat-form-field {
+  width: 100%;
+  margin-right: 10px;
+}
+
+mat-card {
+  margin: auto;
+  margin-top: 2rem;
+  width: 30%;
+}
+
+.mat-raised-button {
+  width: 10%;
+  height: 100%;
+  background-color: #f9d937;
+  margin-left: 25px;
+  color: rgb(0, 0, 0);
+}
+
+.cancelbtn {
+  background-color: #ffffff;
+  margin-right: 10px;
+}

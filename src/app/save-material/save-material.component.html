@@ -1,0 +1,78 @@
+<mat-card>
+  <form
+    (submit)="saveMaterial(materialForm)"
+    #materialForm="ngForm"
+    class="example-form"
+  >
+    <div class="inputs">
+      <mat-form-field appearance="fill" class="pequeno" type="hidden">
+        <mat-label>Contract ID </mat-label>
+        <input
+          matInput
+          [ngModel]="contractId"
+          #contractid="ngModel"
+          name="contractId"
+          required
+          readonly="true"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>SAP Code </mat-label>
+        <input
+          matInput
+          [ngModel]="materials.sapCode"
+          #sapCode="ngModel"
+          name="sapCode"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Units</mat-label>
+        <input
+          matInput
+          [ngModel]="materials.units"
+          #units="ngModel"
+          name="units"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Spare part</mat-label>
+        <input
+          matInput
+          [ngModel]="materials.sparePart"
+          #sparePart="ngModel"
+          name="sparePart"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+    </div>
+    <div class="btns">
+      <button
+        *ngIf="userRole === 'superuser'"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Save
+      </button>
+
+      <button
+        class="cancelbtn"
+        type="button"
+        mat-raised-button
+        [routerLink]="['/contracts', contractId]"
+        color="primary"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>

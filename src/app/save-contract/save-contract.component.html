@@ -1,0 +1,446 @@
+<mat-card>
+  <form
+    (submit)="saveContract(contractForm)"
+    #contractForm="ngForm"
+    class="example-form"
+  >
+    <div>
+      <button
+        *ngIf="userRole === 'superuser'"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Save
+      </button>
+
+      <button
+        class="cancelbtn"
+        type="button"
+        mat-raised-button
+        routerLink="/contracts"
+        color="primary"
+      >
+        Cancel
+      </button>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Bussines</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.business"
+          #business="ngModel"
+          name="business"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno-mediano">
+        <mat-label>Date</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.date"
+          name="date"
+          #date="ngModel"
+          [matDatepicker]="picker"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Contract</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.title"
+          #title="ngModel"
+          name="title"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>N° of machines</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.numberOfMachines"
+          #numberOfMachines="ngModel"
+          name="numberOfMachines"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Line</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.line"
+          #line="ngModel"
+          name="line"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Process</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.process"
+          #process="ngModel"
+          name="process"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Asset</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.asset"
+          #asset="ngModel"
+          name="asset"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>System</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.system"
+          #system="ngModel"
+          name="system"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Asset or critic component</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.assetOrCriticComponent"
+          #assetOrCriticComponent="ngModel"
+          name="assetOrCriticComponent"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Inventory</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.inventory"
+          #inventory="ngModel"
+          name="inventory"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>System function</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.systemFunction"
+          #systemFunction="ngModel"
+          name="systemFunction"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill" class="big">
+        <mat-label>Failture mode</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.failtureMode"
+          #failtureMode="ngModel"
+          name="failtureMode"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="big">
+        <mat-label>Failture origin</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.faultureOrigin"
+          #faultureOrigin="ngModel"
+          name="faultureOrigin"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Operational check-list</mat-label>
+        <mat-select
+          [ngModel]="contract.operationalCheckList"
+          #operationalCheckList="ngModel"
+          name="operationalCheckList"
+          required
+        >
+          <mat-option value="yes">Si</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Preventive plans</mat-label>
+        <mat-select
+          [ngModel]="contract.preventivePlans"
+          #preventivePlans="ngModel"
+          name="preventivePlans"
+          required
+        >
+          <mat-option value="yes">Si</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Predictive plans</mat-label>
+        <mat-select
+          [ngModel]="contract.predictivePlans"
+          #predictivePlans="ngModel"
+          name="predictivePlans"
+          required
+        >
+          <mat-option value="yes">Si</mat-option>
+          <mat-option value="no">No</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.category"
+          #category="ngModel"
+          name="category"
+          required
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Work place</mat-label>
+        <input
+          matInput
+          [ngModel]="contract.workPlace"
+          #workPlace="ngModel"
+          name="workPlace"
+          required
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Frecuency</mat-label>
+        <mat-select
+          [ngModel]="contract.frecuency"
+          #frecuency="ngModel"
+          name="frecuency"
+          required
+        >
+          <mat-option value="Semanal">Semanal</mat-option>
+          <mat-option value="Mensual">Mensual</mat-option>
+          <mat-option value="Semestral">Semestral</mat-option>
+          <mat-option value="Anual">Anual</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Line condition</mat-label>
+        <mat-select
+          [ngModel]="contract.lineCondition"
+          #lineCondition="ngModel"
+          name="lineCondition"
+          required
+        >
+          <mat-option value="stopped">Detenido</mat-option>
+          <mat-option value="operating">Operando</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Hours-man</mat-label>
+        <input matInput [ngModel]="contract.hm" #hm="ngModel" name="hm" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Procedure description</mat-label>
+        <textarea
+          matInput
+          [ngModel]="contract.description"
+          #description="ngModel"
+          name="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <!-- table material -->
+  <div *ngIf="isEditing !== false">
+    <table
+      mat-table
+      [dataSource]="dataSourceMaterial"
+      class="mat-elevation-z8"
+      #tabla1
+      matSort
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <mat-cell *matCellDef="let machine">
+          <button
+            class="maintbtn"
+            [routerLink]="['/maintenances', machine.assetcode]"
+            mat-raised-button
+            color="primary"
+          >
+            Maintenances
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="sapCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Sap code</th>
+        <td mat-cell *matCellDef="let materials">
+          {{ materials.sapCode }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="sparePart">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Spare part</th>
+        <td mat-cell *matCellDef="let materials">
+          {{ materials.sparePart }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="units">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Units</th>
+        <td mat-cell *matCellDef="let materials">
+          {{ materials.units }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <mat-cell *matCellDef="let materials">
+          <button
+            *ngIf="userRole === 'superuser'"
+            class="editbtn"
+            [routerLink]="['/contracts', contract.id, materials.id]"
+            mat-button
+            color="primary"
+          >
+            Edit
+          </button>
+          <button
+            *ngIf="userRole === 'user'"
+            class="editbtn"
+            [routerLink]="['/contracts', contract.id, materials.id]"
+            mat-button
+            color="primary"
+          >
+            Details
+          </button>
+          <button
+            *ngIf="userRole === 'superuser'"
+            class="deletebtn"
+            mat-button
+            color="warn"
+            (click)="onDelete(materials.id)"
+          >
+            Delete
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let dataSource; columns: columnsToDisplay"></tr>
+    </table>
+
+    <section>
+      <button
+        *ngIf="userRole === 'superuser'"
+        mat-raised-button
+        [routerLink]="['/contracts', contract.id, 'addmaterial']"
+        color="primary"
+      >
+        +
+      </button>
+    </section>
+
+    <!-- table tools -->
+
+    <table
+      mat-table
+      [dataSource]="dataSourceTool"
+      class="mat-elevation-z8"
+      #tabla1
+      class="secondmain-table"
+    >
+      <ng-container matColumnDef="tools">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tools</th>
+        <td mat-cell *matCellDef="let tools">
+          {{ tools.tool }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <mat-cell *matCellDef="let tools">
+          <button
+            *ngIf="userRole === 'superuser'"
+            class="editbtn"
+            [routerLink]="['/contracts', contract.id, 'tool', tools.id]"
+            mat-button
+            color="primary"
+          >
+            Edit
+          </button>
+          <button
+            *ngIf="userRole === 'user'"
+            class="editbtn"
+            [routerLink]="['/contracts', contract.id, 'addtool']"
+            mat-button
+            color="primary"
+          >
+            Details
+          </button>
+          <button
+            *ngIf="userRole === 'superuser'"
+            class="deletebtn"
+            mat-button
+            color="warn"
+            (click)="onDeleteTool(tools.id)"
+          >
+            Delete
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplayTools"></tr>
+      <tr
+        mat-row
+        *matRowDef="let dataSourceTool; columns: columnsToDisplayTools"
+      ></tr>
+    </table>
+    <section>
+      <button
+        *ngIf="userRole === 'superuser'"
+        mat-raised-button
+        [routerLink]="['/contracts', contract.id, 'addtool']"
+        color="primary"
+      >
+        +
+      </button>
+    </section>
+  </div>
+</mat-card>

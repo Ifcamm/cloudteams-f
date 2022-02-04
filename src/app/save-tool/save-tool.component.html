@@ -1,0 +1,47 @@
+<mat-card>
+  <form
+    (submit)="saveMaterial(materialForm)"
+    #materialForm="ngForm"
+    class="example-form"
+  >
+    <div class="inputs">
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>ContractId</mat-label>
+        <input
+          matInput
+          [ngModel]="contractId"
+          #contractid="ngModel"
+          name="contractId"
+          required
+          readonly="true"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill" class="pequeno">
+        <mat-label>Tool</mat-label>
+        <input
+          matInput
+          [ngModel]="tools.tool"
+          #tool="ngModel"
+          name="tool"
+          required
+          readonly="false"
+        />
+      </mat-form-field>
+    </div>
+    <div class="btns">
+      <button type="submit" mat-raised-button color="primary">Save</button>
+
+      <button
+        class="cancelbtn"
+        type="button"
+        mat-raised-button
+        [routerLink]="['/contracts', contractId]"
+        color="primary"
+      >
+        Cancel
+      </button>
+    </div>
+  </form>
+</mat-card>
