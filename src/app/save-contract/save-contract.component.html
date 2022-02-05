@@ -5,14 +5,7 @@
     class="example-form"
   >
     <div>
-      <button
-        *ngIf="userRole === 'superuser'"
-        type="submit"
-        mat-raised-button
-        color="primary"
-      >
-        Save
-      </button>
+      <button type="submit" mat-raised-button color="primary">Save</button>
 
       <button
         class="cancelbtn"
@@ -205,7 +198,7 @@
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="pequeno">
-        <mat-label>Predictive plans</mat-label>
+        <mat-label>Corrective plans</mat-label>
         <mat-select
           [ngModel]="contract.predictivePlans"
           #predictivePlans="ngModel"
@@ -368,7 +361,6 @@
 
     <section>
       <button
-        *ngIf="userRole === 'superuser'"
         mat-raised-button
         [routerLink]="['/contracts', contract.id, 'addmaterial']"
         color="primary"
@@ -434,7 +426,6 @@
     </table>
     <section>
       <button
-        *ngIf="userRole === 'superuser'"
         mat-raised-button
         [routerLink]="['/contracts', contract.id, 'addtool']"
         color="primary"
